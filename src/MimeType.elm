@@ -196,6 +196,8 @@ parseMimeType mimeString =
         lowerCaseMimeString ->
             if (String.startsWith "image/" lowerCaseMimeString) then
                 Just <| Image (OtherImage (String.dropLeft (String.length "image/") lowerCaseMimeString))
+            else if (String.startsWith "application/" lowerCaseMimeString) then
+                Just <| App (OtherApp (String.dropLeft (String.length "application/") lowerCaseMimeString))
             else if (String.startsWith "audio/" lowerCaseMimeString) then
                 Just <| Audio (OtherAudio (String.dropLeft (String.length "audio/") lowerCaseMimeString))
             else if (String.startsWith "video/" lowerCaseMimeString) then
